@@ -1,5 +1,5 @@
 import json
-import tests
+
 
 def get_five_operation(operations):
     with open(operations, encoding='utf-8') as f:
@@ -52,7 +52,7 @@ def get_from_and_to(operation):
             from_num_hide = grouper_account(from_num)
         else:
             from_num_hide = grouper_card(from_num)
-        from_name = ' '.join(operation['to'].split()[:-1])
+        from_name = ' '.join(operation['from'].split()[:-1])
         return [from_name, from_num_hide, to_num_hide, to_name]
     return [0, 0, to_num_hide, to_name]
 
