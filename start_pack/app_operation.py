@@ -2,6 +2,9 @@ from utils import functions
 
 
 def app_operation(operations):
+    """
+    получает 5 операций и выводит информацию по каждой в нужном формате
+    """
     five_operations = functions.get_five_operation(operations)
     for operation in five_operations:
         date = functions.get_date_revers(operation)
