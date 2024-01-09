@@ -2,6 +2,9 @@ import json
 
 
 def get_five_operation(operations):
+    """
+    получает 5 операций и переворачивает их
+    """
     with open(operations, encoding='utf-8') as f:
         list_operations = json.load(f)
         five_last_operations = list_operations[-5:]
@@ -10,6 +13,9 @@ def get_five_operation(operations):
 
 
 def grouper_card(num):
+    """
+    переводит номер карты в формат - по условию
+    """
     list_ = []
     for i in range(0, 16):
         if i < 6 or i > 11:
@@ -24,6 +30,9 @@ def grouper_card(num):
 
 
 def grouper_account(num):
+    """
+    переводит номер счёта в формат - по условию
+    """
     list_ = []
     for i in range(0, 20):
         if 16 > i > 13:
@@ -34,12 +43,18 @@ def grouper_account(num):
 
 
 def get_date_revers(operation):
+    """
+    получает и переворачивает дату
+    """
     date_ = (operation['date'].split('T'))[0].split('-')
     date_.reverse()
     return '.'.join(date_)
 
 
 def get_from_and_to(operation):
+    """
+    собирает все данные вместе и возвращает их
+    """
     to_num = operation['to'].split()[-1]
     if len(to_num) == 20:
         to_num_hide = grouper_account(to_num)
