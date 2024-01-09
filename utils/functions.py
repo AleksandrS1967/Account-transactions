@@ -1,5 +1,5 @@
 import json
-
+import tests
 
 def get_five_operation(operations):
     with open(operations, encoding='utf-8') as f:
@@ -38,5 +38,22 @@ def get_date_revers(operation):
     date_.reverse()
     return '.'.join(date_)
 
+
+def get_from_and_to(operation):
+    to_num = operation['to'].split()[-1]
+    if len(to_num) == 20:
+        to_num_hide = grouper_account(to_num)
+    else:
+        to_num_hide = grouper_card(to_num)
+    to_name = ' '.join(operation['to'].split()[:-1])
+    if len(operation) > 6:
+        from_num = operation['from'].split()[-1]
+        if len(from_num) == 20:
+            from_num_hide = grouper_account(from_num)
+        else:
+            from_num_hide = grouper_card(from_num)
+        from_name = ' '.join(operation['to'].split()[:-1])
+        return [from_name, from_num_hide, to_num_hide, to_name]
+    return [0, 0, to_num_hide, to_name]
 
 
