@@ -7,7 +7,15 @@ def get_five_operation(operations):
     """
     with open(operations, encoding='utf-8') as f:
         list_operations = json.load(f)
-        five_last_operations = list_operations[-5:]
+
+        def sort_(e):
+            if e == {}:
+                return tuple(map(int, [2019, 8, 26]))
+            else:
+                return tuple(map(int, (e['date'].split('T'))[0].split('-')))
+
+        sorted_date = sorted(list_operations, key=sort_)
+        five_last_operations = sorted_date[-5:]
         five_last_operations.reverse()
         return five_last_operations
 
